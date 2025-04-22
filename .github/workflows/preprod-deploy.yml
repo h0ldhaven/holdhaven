@@ -52,7 +52,7 @@ jobs:
           SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
           SFTP_USER: ${{ secrets.SFTP_USER }}
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_TARGET_PATH: ${{ secrets.SFTP_TARGET_PATH }}
+          SFTP_TARGET_PATH: ${{ secrets.SFTP_TARGET_DEV_PATH }}
         run: |
           lftp -u "$SFTP_USER","$SFTP_PASSWORD" sftp://$SFTP_SERVER <<EOF
             set sftp:auto-confirm yes
