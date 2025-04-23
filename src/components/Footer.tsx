@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
     const initialYear: number = 2025;
 
     return(
-        <footer className='w-full px-4 py-6 mt-auto text-center text-white bg-cyan-800'>
+        <footer className='w-full px-4 py-4 mt-auto text-center text-white bg-cyan-800'>
 
             <h1 className='text-2xl font-extrabold md:text-3xl font-roboto'>
                 {appName}
@@ -30,13 +30,13 @@ export default function Footer(): JSX.Element {
                 <IconLink label="Bouton de redirection vers la page Youtube de l'évènement La voie pailletée" link='https://youtube.com/@h0ldhaven' icon={faYoutube} className='hover:text-[#FF0000] text-white' />
             </div>
 
-            <hr className='border-b-4 max-w-[75vw] w-auto mx-auto my-5 border-black/10' />
+            <hr className='border-b-4 max-w-[75vw] w-auto mx-auto my-2 border-black/10' />
 
             {/* Footer text */}
             <p className='mt-1 text-base md:text-lg font-roboto' role='text'>
                 Copyright <span aria-hidden='true' >©</span> - {initialYear === currentYear ? currentYear : `${initialYear} - ${currentYear}`}
             </p>
-            <p className='mt-2 text-sm italic md:text-base font- opacity-90'>
+            <p className='mt-1 text-sm italic md:text-base font- opacity-90'>
                 Tous droits réservés
             </p>
         </footer>
