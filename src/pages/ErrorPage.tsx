@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Header from '../components/Header';
 
 interface ErrorState {
     errorStatus: number;
@@ -22,6 +23,7 @@ const ErrorPage: React.FC = () => {
 
     return(
         <main className='flex flex-col h-full min-h-screen'>
+            <Header />
 
             {/* Error Section */}
             <section className='flex flex-col items-center justify-center flex-grow p-6 text-center'>
