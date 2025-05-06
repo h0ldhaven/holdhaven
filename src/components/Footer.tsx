@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
     const initialYear: number = 2025;
 
     return(
-        <footer className='w-full px-4 py-4 mt-auto text-center text-white bg-cyan-800'>
+        <footer className='w-full px-4 py-4 mt-auto text-center text-white bg-gray-500 dark:bg-cyan-800'>
 
             <h1 className='text-2xl font-extrabold md:text-3xl font-roboto'>
                 {appName}
@@ -17,19 +17,19 @@ export default function Footer(): JSX.Element {
             {/* Socials icons */}
             <div className='flex flex-wrap items-center justify-center mt-2 space-x-0 space-y-0'>
                 {/* Twitch Icon */}
-                <IconLink label="Bouton de redirection vers la page Twitch de l'évènement La voie pailletée" link='https://github.com/h0ldhaven' icon={faGithub} className='hover:text-[#141414] text-white' />
+                <IconLink label='Bouton de redirection vers la page dithub' link='https://github.com/h0ldhaven' icon={faGithub} className='hover:text-[#141414] text-white' />
                 {/* Twitch Icon */}
-                <IconLink label="Bouton de redirection vers la page Twitch de l'évènement La voie pailletée" link='https://twitch.tv/h0ldhaven' icon={faTwitch} className='hover:text-[#9146FF] text-white' />
+                <IconLink label='Bouton de redirection vers la page Twitch' link='https://twitch.tv/h0ldhaven' icon={faTwitch} className='hover:text-[#9146FF] text-white' />
                 {/* Instagram Icon */}
-                <IconLink label="Bouton de redirection vers la page Instagram de l'évènement La voie pailletée" link='https://instagram.com/holdhaven/' icon={faInstagram} className='hover:text-[#E1306C] text-white' />
+                <IconLink label='Bouton de redirection vers la page Instagram' link='https://instagram.com/holdhaven/' icon={faInstagram} className='hover:text-[#E1306C] text-white' />
                 {/* X Icon */}
-                <IconLink label="Bouton de redirection vers la page X de l'évènement La voie pailletée" link='https://x.com/h0ldhaven' icon={faXTwitter} className='hover:text-[#171717] text-white' />
+                <IconLink label='Bouton de redirection vers la page X' link='https://x.com/h0ldhaven' icon={faXTwitter} className='hover:text-[#171717] text-white' />
                 {/* Threads Icon */}
-                <IconLink label="Bouton de redirection vers la page Threads de l'évènement La voie pailletée" link='https://threads.net/@holdhaven' icon={faThreads} className='hover:text-[#3C9EFC] text-white' />
+                <IconLink label='Bouton de redirection vers la page Threads' link='https://threads.net/@holdhaven' icon={faThreads} className='hover:text-[#3C9EFC] text-white' />
                 {/* Tiktok Icon */}
-                <IconLink label="Bouton de redirection vers la page Tiktok de l'évènement La voie pailletée" link='https://tiktok.com/@h0ldhaven' icon={faTiktok} className='hover:text-[#D6004C] text-white' />
+                <IconLink label='Bouton de redirection vers la page Tiktok' link='https://tiktok.com/@h0ldhaven' icon={faTiktok} className='hover:text-[#D6004C] text-white' />
                 {/* Youtube Icon */}
-                <IconLink label="Bouton de redirection vers la page Youtube de l'évènement La voie pailletée" link='https://youtube.com/@h0ldhaven' icon={faYoutube} className='hover:text-[#FF0000] text-white' />
+                <IconLink label='Bouton de redirection vers la page Youtubee' link='https://youtube.com/@h0ldhaven' icon={faYoutube} className='hover:text-[#FF0000] text-white' />
             </div>
 
             <hr className='border-b-4 max-w-[75vw] w-auto mx-auto my-2 border-black/10' />
