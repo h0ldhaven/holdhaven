@@ -31,6 +31,9 @@ jobs:
         with:
           name: build-output
           path: ./dist/
+          
+      - name: Add .htaccess to dist
+        run: cp ./deploy/.htaccess ./dist/.htaccess
 
   deploy:
     runs-on: ubuntu-22.04
