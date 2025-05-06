@@ -10,7 +10,7 @@ const Header: React.FC = () => {
                     <Link to='/' aria-label="Bouton retour a l'acceuil" role='button'>
                         <img
                             className='max-w-28 sm:max-w-34 lg:max-w-42 object-contain pb-4 z-50'
-                            src='images/profil.webp'
+                            src='images/webp/profil.webp'
                             loading='lazy'
                             alt='Image de profil de holdhaven'
                             aria-hidden='true'

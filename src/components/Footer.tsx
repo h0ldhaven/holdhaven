@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { faTwitch, faInstagram, faXTwitter, faThreads, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faTwitch, faInstagram, faXTwitter, faThreads, faTiktok, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import IconLink from './reusable-ui/IconLink';
 
 export default function Footer(): JSX.Element {
@@ -16,6 +16,8 @@ export default function Footer(): JSX.Element {
 
             {/* Socials icons */}
             <div className='flex flex-wrap items-center justify-center mt-2 space-x-0 space-y-0'>
+                {/* Twitch Icon */}
+                <IconLink label="Bouton de redirection vers la page Twitch de l'évènement La voie pailletée" link='https://github.com/h0ldhaven' icon={faGithub} className='hover:text-[#141414] text-white' />
                 {/* Twitch Icon */}
                 <IconLink label="Bouton de redirection vers la page Twitch de l'évènement La voie pailletée" link='https://twitch.tv/h0ldhaven' icon={faTwitch} className='hover:text-[#9146FF] text-white' />
                 {/* Instagram Icon */}
