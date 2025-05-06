@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
                 <section className='flex flex-col md:flex-row justify-between items-center my-12 bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg'>
                     <div className='flex flex-col justify-center items-center md:w-1/2 w-full mb-8 md:mb-0'>
                         <img 
-                            src='/images/webp/profil.webp' 
+                            src='/images/webp/dev_background.webp' 
                             alt='Image de développeur'
                             className='w-full max-w-3xs md:max-w-2xs lg:max-w-xs xl:max-w-md h-auto rounded-lg'
                         />
@@ -89,7 +89,7 @@ const HomePage: React.FC = () => {
                 <section className='flex flex-col md:flex-row justify-between items-center my-12 bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg'>
                     <div className='flex flex-col justify-center items-center md:w-1/2 w-full mb-8 md:mb-0'>
                         <img 
-                            src='/images/webp/profil.webp' 
+                            src='/images/webp/twitch_background.webp' 
                             alt='Image de développeur'
                             className='w-full max-w-3xs md:max-w-2xs lg:max-w-xs xl:max-w-md h-auto rounded-lg'
                         />
