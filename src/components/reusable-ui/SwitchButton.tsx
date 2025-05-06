@@ -5,16 +5,17 @@ import { useTheme } from '../../hooks/useTheme';
 interface SwitchButtonProps {
     firstIcon?: IconType;
     secondIcon?: IconType;
+    className?: string;
 }
 
 const SwitchButton: React.FC<SwitchButtonProps> = (props) => {
-    const { firstIcon: FirstIcon, secondIcon: SecondIcon } = props;
+    const { firstIcon: FirstIcon, secondIcon: SecondIcon, className} = props;
     const { theme, toggleTheme } = useTheme();
 
     return(
         <div className={`app ${theme}`}>
             {/* Switch Container */}
-            <label htmlFor='theme-switch' className='absolute left-1/100 top-5/100 flex items-center cursor-pointer'>
+            <label htmlFor='theme-switch' className={`flex items-center cursor-pointer ${className}`}>
                 {/* Hidden Checkbox */}
                 <input
                     id='theme-switch'

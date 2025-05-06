@@ -19,7 +19,11 @@ const Header: React.FC = () => {
                         />
                     </Link>
                     <h1 className='text-[1em] sm:text[4em] md:text-[2em] lg:text-[2.5em]'>holdhaven</h1>
-                    <SwitchButton firstIcon={FaMoon} secondIcon={FaSun} />
+                    <SwitchButton 
+                        firstIcon={FaMoon} 
+                        secondIcon={FaSun} 
+                        className='fixed left-1/100 top-1/100'
+                    />
                 </div>
             </div>
         </header>
