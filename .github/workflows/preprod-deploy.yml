@@ -60,7 +60,7 @@ jobs:
           lftp -u "$SFTP_USER","$SFTP_PASSWORD" sftp://$SFTP_SERVER <<EOF
             set sftp:auto-confirm yes
             set ftp:passive-mode yes
-            mirror -R ./dist $SFTP_TARGET_PATH --delete --verbose
+            mirror -R ./dist $SFTP_TARGET_PATH --delete --verbose --exclude .htaccess
           EOF
 
 
