@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 
 const HomePage: React.FC = () => {
     return (
-        <main className='flex flex-col h-full min-h-screen bg-white text-white dark:bg-gray-800 dark:text-white' role='main'>
+        <main className='flex flex-col h-full min-h-screen bg-white text-white dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out' role='main'>
             <Header />
             <div className='flex flex-col justify-center items-center text-center mt-8 px-4'>
                 <h1 className='font-bold text-4xl p-4 text-gray-900 dark:text-gray-100'>Bienvenue sur holdhaven.fr !</h1>

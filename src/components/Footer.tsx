@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
     const initialYear: number = 2025;
 
     return(
-        <footer className='w-full px-4 py-4 mt-auto text-center text-white bg-gray-500 dark:bg-cyan-800'>
+        <footer className='w-full px-4 py-4 mt-auto text-center text-white dark:bg-cyan-800/90 bg-blue-800/80 transition-colors duration-300 ease-in-out'>
 
             <h1 className='text-2xl font-extrabold md:text-3xl font-roboto'>
                 {appName}

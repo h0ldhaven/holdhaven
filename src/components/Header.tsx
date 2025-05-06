@@ -7,7 +7,7 @@ const Header: React.FC = () => {
 
     return(
         <header className='relative overflow-clip'>
-            <div className='w-full h-full px-4 sm:px-8 md:px-16 bg-gray-500 dark:bg-cyan-800'>
+            <div className='w-full h-full px-4 sm:px-8 md:px-16 dark:bg-cyan-800/90 bg-blue-800/80 transition-colors duration-300 ease-in-out'>
                 <div className='flex flex-col items-center justify-center w-full h-full md:pt-8 md:pb-8 leading-none text-center text-white font-roboto uppercase z-10'>
                     <Link to='/' aria-label="Bouton retour a l'acceuil" role='button'>
                         <img
