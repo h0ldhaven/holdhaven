@@ -3,13 +3,13 @@ name: CI code quality check
 on:
   push:
     branches:
-      - '*-hotfix-*'
-      - '*-fix-*'
-      - '*-bugfix-*'
-      - '*-feature-*'
-      - '*-enhance-*'
-      - '*-refactor-*'
-      - '*-chore-*'
+      - '*-hotfix-**'
+      - '*-fix-**'
+      - '*-bugfix-**'
+      - '*-feature-**'
+      - '*-enhance-**'
+      - '*-refactor-**'
+      - '*-chore-**'
 
 jobs:
   test_commit_validity:
