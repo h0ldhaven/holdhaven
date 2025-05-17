@@ -68,7 +68,7 @@ const StreamPage: React.FC = () => {
                     </div>
 
                     {/* Lecteur twitch */}
-                    <TwitchPlayer channel='h0ldhaven' parent='localhost' />
+                    <TwitchPlayer channel='h0ldhaven' parent={window.location.hostname} />
                 </section>
 
                 {/* Message de construction */}
