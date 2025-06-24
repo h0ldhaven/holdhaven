@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TwitchPlayer from '../components/reusable-ui/TwitchPlayer';
 import { Link } from 'react-router-dom';
+import TwitchPlayer from '../components/reusable-ui/TwitchPlayer';
+import { Link } from 'react-router-dom';
 
 const StreamPage: React.FC = () => {
     return(
