@@ -72,11 +72,6 @@ const StreamPage: React.FC = () => {
                     {/* Lecteur twitch */}
                     <TwitchPlayer channel='h0ldhaven' parent={window.location.hostname} />
                 </section>
-
-                {/* Message de construction */}
-                <p className='text-lg mt-8 mb-8 italic text-gray-700 dark:text-gray-300'>
-                    ⚠️ Le site est en pleine construction, merci de revenir bientôt pour plus de contenu !
-                </p>
             </div>
             <Footer />
         </main>
