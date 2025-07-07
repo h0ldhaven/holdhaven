@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+import TurnStile from '../components/TurnStile';
+import { sendContactEmail } from '../utils/email';
 
 type FormData = {
     name: string;
@@ -8,9 +11,11 @@ type FormData = {
 };
 
 type EmailJSResponse = {
-  status: number;
-  text: string;
+    status: number;
+    text: string;
 };
+
+const siteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITEKEY;
 
 const ContactPage: React.FC = () => {
 
@@ -20,6 +25,7 @@ const ContactPage: React.FC = () => {
         message: '',
     });
 
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
     const [ loading, setLoading ] = useState(false);
     const [ success, setSuccess ] = useState(false);
     const [ error, setError ] = useState<string | null>(null);
@@ -47,23 +53,20 @@ const ContactPage: React.FC = () => {
             return;
         }
 
+        if (!turnstileToken) {
+            setError('Veuillez valider le captcha.');
+            return;
+        }
+
         setLoading(true);
 
         try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (!res.ok) throw new Error('Erreur serveur.');
-
+            await sendContactEmail(formData);
             setSuccess(true);
             setFormData({ name: '', email: '', message: '' });
         } catch (err) {
             setError('Erreur lors de l’envoi. Réessaie plus tard.');
+            console.error('EmailJS error:', err);
         } finally {
             setLoading(false);
         }
@@ -72,18 +75,70 @@ const ContactPage: React.FC = () => {
     return(
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out'>
             <Header />
-            <form onSubmit={handleSubmit} autoComplete='off' noValidate>
-                <input type='text' name='name' placeholder='Nom' value={formData.name} onChange={handleChange} required />
-                <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} required />
-                <textarea name='message' placeholder='Message' value={formData.message} onChange={handleChange} required />
 
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {success && <p style={{ color: 'green' }}>Message envoyé ✅</p>}
+            <section className='flex-grow flex items-center justify-center p-4'>
+                <form 
+                    onSubmit={handleSubmit} 
+                    autoComplete='off' 
+                    noValidate
+                    className='w-full max-w-xl bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 space-y-6'
+                >
+                    <h2 className='text-2xl font-semibold text-center'>Envoyer un message</h2>
 
-                <button type='submit' disabled={loading}>
-                    {loading ? 'Envoi...' : 'Envoyer'}
-                </button>
-            </form>
+                    <div className='space-y-4'>
+                        <input 
+                            type='text' 
+                            name='name' 
+                            placeholder='Votre Nom' 
+                            value={formData.name} 
+                            onChange={handleChange} 
+                            required 
+                            className='w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-700 text-black dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                        />
+
+                        <input 
+                            type='email' 
+                            name='email' 
+                            placeholder='Email' 
+                            value={formData.email} 
+                            onChange={handleChange} 
+                            required 
+                            className='w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-700 text-black dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                        />
+
+                        <textarea 
+                            name='message' 
+                            placeholder='Message' 
+                            value={formData.message} 
+                            onChange={handleChange} 
+                            required 
+                            className='w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-700 text-black dark:text-white placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500'
+                        />
+
+                        {error && <p className='text-red-500 text-sm'>{error}</p>}
+                        {success && <p className='text-green-500 text-sm'>Message envoyé ✅</p>}
+
+                        <button 
+                            type='submit' 
+                            disabled={loading}
+                            className={`w-full py-2 px-4 font-semibold rounded-md transition-colors duration-200 ${
+                                loading
+                                    ? 'bg-blue-300 cursor-not-allowed'
+                                    : 'bg-blue-600 hover:bg-blue-700'
+                            } text-white`}
+                        >
+                            {loading ? 'Envoi en cours...' : 'Envoyer'}
+                        </button>
+
+                        <TurnStile
+                            sitekey={siteKey}
+                            onVerify={(token) => setTurnstileToken(token)}
+                        />
+                    </div>
+                </form>
+            </section>
+
+            <Footer />
         </main>
     );
 };
