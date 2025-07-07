@@ -39,7 +39,7 @@ const ContactPage: React.FC = () => {
         setSuccess(false);
 
         if (!formData.name || !formData.email || !formData.message) {
-            setError('Tous les champs sont requis');
+            setError('Tous les champs sont requis !');
             return;
         }
 
@@ -60,7 +60,7 @@ const ContactPage: React.FC = () => {
             setSuccess(true);
             setFormData({ name: '', email: '', message: '' });
         } catch (err) {
-            setError('Erreur lors de l’envoi. Réessaie plus tard.');
+            setError('Erreur lors de l’envoi. Veuillez re-essayer plus tard.');
             console.error('EmailJS error:', err);
         } finally {
             setLoading(false);
