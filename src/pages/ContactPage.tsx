@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TurnStile from '../components/TurnStile';
@@ -8,11 +8,6 @@ type FormData = {
     name: string;
     email: string;
     message: string;
-};
-
-type EmailJSResponse = {
-    status: number;
-    text: string;
 };
 
 const siteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITEKEY;
