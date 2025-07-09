@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TurnStile from '../components/TurnStile';
@@ -67,6 +67,10 @@ const ContactPage: React.FC = () => {
         }
     };
 
+    const handleVerify = useCallback((token: string) => {
+        setTurnstileToken(token);
+    }, []);
+
     return(
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out'>
             <Header />
@@ -127,7 +131,7 @@ const ContactPage: React.FC = () => {
 
                         <TurnStile
                             sitekey={siteKey}
-                            onVerify={(token) => setTurnstileToken(token)}
+                            onVerify={handleVerify}
                         />
                     </div>
                 </form>

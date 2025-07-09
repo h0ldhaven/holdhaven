@@ -4,8 +4,8 @@ type TurnstileRenderOptions = {
     sitekey: string;
     callback: (token: string) => void;
     theme?: 'light' | 'dark' | 'auto';
-    action?: string;
     'expired-callback'?: () => void;
+    'error-callback'?: () => void;
 };
 
 type TurnstileAPI = {
@@ -25,183 +25,142 @@ type Props = {
     sitekey: string;
 };
 
-const TurnStile: React.FC<Props> = ({ onVerify, sitekey }) => {
+const Turnstile: React.FC<Props> = ({ sitekey, onVerify }) => {
     const widgetRef = useRef<HTMLDivElement>(null);
     const widgetIdRef = useRef<string | null>(null);
-    const scriptLoadedRef = useRef<boolean>(false);
 
-    // États pour gérer le flow
-    const [isLoading, setIsLoading] = useState(true);
-    const [hasError, setHasError] = useState(false);
-    const [challengeFailed, setChallengeFailed] = useState(false);
-    const [scriptLoaded, setScriptLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [expired, setExpired] = useState(false);
 
-    const loadTurnstileScript = (): Promise<void> =>
-        new Promise((resolve, reject) => {
-            if (typeof window === 'undefined') {
-                reject(new Error('window is undefined'));
-                return;
-            }
-
+    const loadScript = useCallback(() => {
+        return new Promise<void>((resolve, reject) => {
             if (window.turnstile) {
-                scriptLoadedRef.current = true;
-                setScriptLoaded(true);
                 resolve();
                 return;
             }
 
-            const existingScript = document.querySelector<HTMLScriptElement>(
-                'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]'
+            const existingScript = document.querySelector(
+                'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"]'
             );
-
             if (existingScript) {
-                existingScript.addEventListener('load', () => {
-                    scriptLoadedRef.current = true;
-                    setScriptLoaded(true);
+                if (existingScript.hasAttribute('data-loaded')) {
                     resolve();
-                });
+                } else {
+                    existingScript.addEventListener('load', () => {
+                        existingScript.setAttribute('data-loaded', 'true');
+                        resolve();
+                    });
+                    existingScript.addEventListener('error', () => reject());
+                }
                 return;
             }
 
             const script = document.createElement('script');
-            script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+            script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
             script.async = true;
             script.onload = () => {
-                scriptLoadedRef.current = true;
-                setScriptLoaded(true);
+                script.setAttribute('data-loaded', 'true');
                 resolve();
             };
-            script.onerror = () => reject(new Error('Turnstile script failed to load'));
+            script.onerror = () => reject();
             document.body.appendChild(script);
         });
-
-    const destroyWidget = () => {
-        if (window.turnstile && widgetIdRef.current) {
-            window.turnstile.remove(widgetIdRef.current);
-            widgetIdRef.current = null;
-        }
-    };
-
-    const resetWidget = () => {
-        if (window.turnstile && widgetIdRef.current) {
-            window.turnstile.reset(widgetIdRef.current);
-        }
-    };
+    }, []);
 
     const renderWidget = useCallback(() => {
         if (!widgetRef.current || !window.turnstile) return;
 
-        destroyWidget();
+        // Remove existing widget if any
+        if (widgetIdRef.current) {
+            window.turnstile.remove(widgetIdRef.current);
+            widgetIdRef.current = null;
+        }
 
         const id = window.turnstile.render(widgetRef.current, {
             sitekey,
+            theme: 'auto',
             callback: (token: string) => {
-                if (!token) {
-                    console.warn('Turnstile: token vide, challenge échoué');
-                    setChallengeFailed(true);
-                    onVerify('');            // on vide le token côté parent
-                    // on relance le widget automatiquement après un court délai
-                    setTimeout(() => {
-                        resetWidget();
-                        renderWidget();
-                    }, 500);
-                    return;
+                setExpired(false);
+                setError(false);
+                if (token) {
+                    onVerify(token);
+                } else {
+                    setError(true);
+                    onVerify('');
                 }
-                setChallengeFailed(false);
-                onVerify(token);
             },
             'expired-callback': () => {
-                console.warn('Turnstile: challenge expiré');
-                setChallengeFailed(true);
+                setExpired(true);
                 onVerify('');
-                // pareil, reset + relance auto
-                setTimeout(() => {
-                    resetWidget();
-                    renderWidget();
-                }, 500);
             },
-            theme: 'auto',
+            'error-callback': () => {
+                setError(true);
+            },
         });
 
         widgetIdRef.current = id;
-    }, [sitekey, onVerify]);
+    }, [onVerify, sitekey]);
 
     useEffect(() => {
-        let isCancelled = false;
+        let isMounted = true;
 
-        const initTurnstile = async () => {
-            try {
-                await loadTurnstileScript();
-                if (isCancelled) return;
-
-                setIsLoading(false);
-
-                if (widgetRef.current && window.turnstile && !widgetIdRef.current) {
-                    const id = window.turnstile.render(widgetRef.current, {
-                        sitekey,
-                        callback: (token: string) => {
-                            if (!token) {
-                                console.warn('Turnstile: token vide, challenge échoué');
-                                setChallengeFailed(true);
-                                return;
-                            }
-                            onVerify(token);
-                        },
-                        'expired-callback': () => {
-                            console.warn('Turnstile: challenge expiré');
-                            setChallengeFailed(true);
-                        },
-                        theme: 'auto',
-                    });
-
-                    widgetIdRef.current = id;
+        loadScript()
+            .then(() => {
+                if (isMounted) {
+                    setLoading(false);
+                    renderWidget();
                 }
-            } catch (err) {
-                console.error('Erreur de chargement Turnstile:', err);
-                setHasError(true);
-                setIsLoading(false);
-            }
-        };
-
-        initTurnstile();
+            })
+            .catch(() => {
+                if (isMounted) {
+                    setLoading(false);
+                    setError(true);
+                }
+            });
 
         return () => {
-            isCancelled = true;
-            destroyWidget(); // ne touche pas le DOM si on est en teardown
+            isMounted = false;
+            if (window.turnstile && widgetIdRef.current) {
+                window.turnstile.remove(widgetIdRef.current);
+                widgetIdRef.current = null;
+            }
         };
-    }, [sitekey]);
+    }, [loadScript, renderWidget]);
 
     const handleRetry = () => {
-        setChallengeFailed(false);
+        setError(false);
+        setExpired(false);
         onVerify('');
-        setTimeout(() => {
+        if (window.turnstile && widgetIdRef.current) {
+            window.turnstile.reset(widgetIdRef.current);
+        } else {
             renderWidget();
-        }, 100); // petite tempo pour éviter des glitchs DOM
+        }
     };
 
-    if (hasError) {
-        return <div>Erreur lors du chargement du captcha, merci de recharger la page.</div>;
-    }
+    return (
+        <>
+            {loading && <p>Chargement du captcha...</p>}
 
-    return(
-        <div>
-            <div ref={widgetRef} className='mt-4' />
-
-            {isLoading && <p>Chargement du captcha...</p>}
-
-            {challengeFailed && !isLoading && (
-                <div className='mt-4'>
-                    <p className='text-red-500 mb-2'>Le challenge a échoué. Veux-tu réessayer ?</p>
-                    <button
-                        onClick={handleRetry}
-                        className='px-4 py-2 bg-blue-600 text-white rounded'
-                    >
-                        Recharger le challenge
-                    </button>
+            {error && (
+                <div>
+                    <p className='text-red-500'>Erreur lors du captcha. Veux-tu réessayer ?</p>
+                    <button onClick={handleRetry}>Réessayer</button>
                 </div>
             )}
-        </div>
+
+            {expired && (
+                <div>
+                    <p className='text-yellow-600'>Le challenge a expiré. Veux-tu réessayer ?</p>
+                    <button onClick={handleRetry}>Réessayer</button>
+                </div>
+            )}
+
+            {/* Le container est toujours rendu */}
+            <div ref={widgetRef} style={{ marginTop: '1rem' }} />
+        </>
     );
 };
 
-export default TurnStile;
+export default Turnstile;
