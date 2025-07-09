@@ -14,7 +14,7 @@ export default function Footer(): JSX.Element {
 
                 {/* Left Footer */}
                 <div className='w-full md:w-1/2 flex flex-col justify-center items-center md:items-end text-center md:text-right px-4'>
-                    <Link to={'/'} className='hover:underline'>
+                    <Link to={'/legal'} className='hover:underline'>
                         Mentions Légales
                     </Link>
                     <Link to={'/contact'} className='hover:underline'>
