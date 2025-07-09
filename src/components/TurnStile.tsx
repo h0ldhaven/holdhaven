@@ -32,7 +32,17 @@ const TurnStile: React.FC<Props> = ({ onVerify, sitekey }) => {
     useEffect(() => {
         const loadTurnstileScript = (): Promise<void> => {
             return new Promise((resolve) => {
-                if (window.turnstile) return resolve(); // déjà chargé
+                if (typeof window !== 'undefined' && window.turnstile) {
+                    resolve();
+                    return;
+                }
+
+                const existingScript = document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]');
+                if (existingScript) {
+                    existingScript.addEventListener('load', () => resolve());
+                    return;
+                }
+
                 const script = document.createElement('script');
                 script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
                 script.async = true;
