@@ -5,6 +5,8 @@ import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import StreamPage from './pages/StreamPage';
 import ProjectPage from './pages/ProjectPage';
+import ContactPage from './pages/ContactPage';
+import LegalPage from './pages/LegalPage';
 
 const RouterApp: React.FC = () => {
     return (
@@ -14,6 +16,8 @@ const RouterApp: React.FC = () => {
                 <Route path='/' element={<HomePage />} />
                 <Route path='/streams' element={<StreamPage />} />
                 <Route path='/projects' element={<ProjectPage />} />
+                <Route path='/contact' element={<ContactPage />} />
+                <Route path='/legal' element={<LegalPage />} />
             </Routes>
         </Router>
     );
