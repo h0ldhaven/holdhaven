@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout the main branch
         uses: actions/checkout@v4
-        with:
-          ref: dev
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
