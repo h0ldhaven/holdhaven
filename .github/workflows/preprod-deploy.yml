@@ -23,12 +23,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Inject env variables into .env.production
+        run: |
+          echo "VITE_EMAILJS_SERVICE_ID=${{ secrets.VITE_EMAILJS_SERVICE_ID }}" >> .env.production
+          echo "VITE_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" >> .env.production
+          echo "VITE_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" >> .env.production
+          echo "VITE_CLOUDFLARE_TURNSTILE_SITEKEY=${{ secrets.VITE_CLOUDFLARE_TURNSTILE_SITEKEY }}" >> .env.production
+
       - name: Build project
-        env:
-          VITE_CLOUDFLARE_TURNSTILE_SITEKEY: ${{ secrets.VITE_CLOUDFLARE_TURNSTILE_SITEKEY }}
-          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
         run: npm run build
         
       - name: Add .htaccess to dist
