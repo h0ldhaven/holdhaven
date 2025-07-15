@@ -3,12 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TurnStile from '../components/TurnStile';
 import { sendContactEmail } from '../utils/email';
-
-type FormData = {
-    name: string;
-    email: string;
-    message: string;
-};
+import { FormData } from '../types/FormData';
 
 const siteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITEKEY;
 
