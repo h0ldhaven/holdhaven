@@ -1,18 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-
-type TurnstileRenderOptions = {
-    sitekey: string;
-    callback: (token: string) => void;
-    theme?: 'light' | 'dark' | 'auto';
-    'expired-callback'?: () => void;
-    'error-callback'?: () => void;
-};
-
-type TurnstileAPI = {
-    render: (container: string | HTMLElement, options: TurnstileRenderOptions) => string;
-    reset: (widgetId: string) => void;
-    remove: (widgetId: string) => void;
-};
+import { TurnstileAPI } from '../types/TurnstileAPI';
 
 declare global {
     interface Window {
