@@ -7,11 +7,60 @@ const HomePage: React.FC = () => {
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out' role='main'>
             <Header />
             <div className='flex flex-col justify-center items-center text-center mt-8 px-4'>
-                <h1 className='font-bold text-4xl p-4 text-gray-900 dark:text-gray-100'>Bienvenue sur holdhaven.fr !</h1>
-                <p className='text-2xl p-2 text-gray-600 dark:text-gray-200'>Découvre mon univers et ce que je fais, que ce soit en tant que développeur ou streameur !</p>
+                {/* Section Presentation */}
+                <section className='bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg w-full md:text-left text-center break-all'>
+                    <h1 className='font-bold text-4xl p-4 text-gray-900 dark:text-gray-100'>Bienvenue sur holdhaven.fr !</h1>
+                    <p className='text-2xl p-4 text-gray-600 dark:text-gray-200'>Découvre mon univers et ce que je fais, que ce soit en tant que développeur ou streameur !</p>
+                </section>
+
+                {/* Section Slides */}
+                <section className='bg-gray-100 dark:bg-gray-800 p-6 my-4 rounded-lg shadow-md w-full'>
+                    <div className='max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 place-items-center'>
+                        {[
+                            {
+                                image: '/images/png/slide_1.png',
+                                title: 'Adaptabilité fullstack',
+                                description: 'Je développe des solutions complètes, du front au back, en choisissant les bons outils pour chaque projet.',
+                            },
+                            {
+                                image: '/images/png/slide_2.png',
+                                title: 'Compréhension métier',
+                                description: 'Je cherche à comprendre vos enjeux avant d’écrire une ligne de code, pour proposer une solution efficace et durable.',
+                            },
+                            {
+                                image: '/images/png/slide_3.png',
+                                title: 'Collaboration agile',
+                                description: 'Habitué aux méthodes agiles, je m’intègre facilement à vos équipes pour avancer de façon fluide et structurée.',
+                            },
+                            {
+                                image: '/images/png/slide_4.png',
+                                title: 'Rigueur et évolution continue',
+                                description: 'Je code avec précision, j’écris des tests, je documente, et je continue d’apprendre chaque jour.',
+                            },
+                        ].map((arg, index) => (
+                            <div
+                                key={index}
+                                className='relative rounded-lg shadow-md overflow-hidden max-w-[250px] w-full h-[300px] flex items-end'
+                                style={{
+                                    backgroundImage: `url(${arg.image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                }}
+                            >
+                                {/* Overlay */}
+                                <div className='absolute inset-0 bg-black/50 dark:bg-black/60 z-0' />
+                                {/* Text content */}
+                                <div className='relative z-10 text-white text-center p-4'>
+                                    <h3 className='text-lg font-semibold mb-2'>{arg.title}</h3>
+                                    <p className='text-sm'>{arg.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
                 {/* Section Développeur */}
-                <section className='flex flex-col md:flex-row justify-between items-center my-12 bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg'>
+                <section className='flex flex-col md:flex-row justify-between items-center my-4 bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg'>
                     <div className='flex flex-col justify-center items-center md:w-1/2 w-full mb-8 md:mb-0'>
                         <img 
                             src='/images/webp/dev_background.webp' 
