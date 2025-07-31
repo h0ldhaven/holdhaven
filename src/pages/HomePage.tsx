@@ -13,7 +13,7 @@ const HomePage: React.FC = () => {
                         {/* Texte gauche */}
                         <div className='md:w-1/2 max-w-2xl mx-auto md:mx-0 px-2'>
                             <h1 className='font-bold text-2xl mb-2 text-center md:text-left'>Bienvenue !</h1>
-                            <p className='leading-relaxed text-justify'>
+                            <p className='leading-relaxed text-left'>
                                 Je m'appelle Paul, je suis Concepteur Développeur Web/Applications, Je développe des solutions web complètes, du côté client comme du côté serveur, adaptées à vos besoins. 
                                 <br />
                                 Mon expertise couvre l'ensemble du cycle de développement, de la conception à la mise en production.
@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
                         {/* Texte droite avec ul/li */}
                         <div className='md:w-1/2 max-w-2xl mx-auto md:mx-0 px-2'>
                             <h1 className='font-bold text-2xl mb-2 text-center md:text-left'>Points clés :</h1>
-                            <ul className='list-none list-outside pl-6 space-y-2 text-left'>
+                            <ul className='list-none list-outside pl-6 space-y-2 text-left leading-tight'>
                                 <li>🎯 Je m’adapte à vos besoins, que ce soit pour une landing page, un site vitrine, une boutique en ligne, un projet front-end ou back-end seul, ou une application web complète sur mesure. L’essentiel ? Trouver la bonne solution, au bon niveau, pour votre projet.</li>
                                 <li>🔗 Formé au travail Agile (Scrum), je peux m'intégrer facilement aux équipes et contribuer à une gestion de projet organisée et collaborative.</li>
                                 <li>🔍 Je travaille avec rigueur, autonomie et clarté. Curieux et pragmatique, j’apprends vite et m’adapte aux aspects techniques comme aux besoins métier.</li>
