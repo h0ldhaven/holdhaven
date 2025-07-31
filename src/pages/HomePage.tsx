@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
                 </section>
 
                 {/* Section Slides */}
-                <section className='bg-gray-100 dark:bg-gray-800 p-6 my-4 rounded-lg shadow-md w-full'>
+                <section className='bg-gray-300 dark:bg-gray-700 p-6 my-4 rounded-lg shadow-md w-full'>
                     <div className='max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 place-items-center'>
                         {[
                             {
@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
                         ].map((arg, index) => (
                             <div
                                 key={index}
-                                className='relative rounded-lg shadow-md overflow-hidden max-w-[250px] w-full h-[300px] flex items-end'
+                                className='relative rounded-lg shadow-md overflow-hidden max-w-[250px] w-full h-[300px] flex items-end hover:scale-105 transform transition-transform duration-200'
                                 style={{
                                     backgroundImage: `url(${arg.image})`,
                                     backgroundSize: 'cover',
