@@ -1,0 +1,22 @@
+[
+    {
+        "image": "/images/png/slide_1.png",
+        "title": "Adaptabilité fullstack",
+        "description": "Je développe des solutions complètes, du front au back, en choisissant les bons outils pour chaque projet."
+    },
+    {
+        "image": "/images/png/slide_2.png",
+        "title": "Compréhension métier",
+        "description": "Je cherche à comprendre vos enjeux avant d’écrire une ligne de code, pour proposer une solution efficace et durable."
+    },
+    {
+        "image": "/images/png/slide_3.png",
+        "title": "Collaboration agile",
+        "description": "Habitué aux méthodes agiles, je m’intègre facilement à vos équipes pour avancer de façon fluide et structurée."
+    },
+    {
+        "image": "/images/png/slide_4.png",
+        "title": "Rigueur et évolution continue",
+        "description": "Je code avec précision, j’écris des tests, je documente, et je continue d’apprendre chaque jour."
+    }
+]
