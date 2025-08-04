@@ -1,8 +1,13 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import homeImageCard from '../data/homeImageCard.json';
+import { ImageCard } from '../interfaces/ImageCard';
 
 const HomePage: React.FC = () => {
+
+    const slides: ImageCard[] = homeImageCard;
+
     return (
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out' role='main'>
             <Header />
@@ -46,33 +51,12 @@ const HomePage: React.FC = () => {
                 <section className='bg-gray-300 dark:bg-gray-700 p-6 my-4 rounded-lg shadow-md w-full'>
                     <h1 className='font-bold text-2xl mb-2 text-left'>Mes qualités :</h1>
                     <div className='max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 place-items-center'>
-                        {[
-                            {
-                                image: '/images/png/slide_1.png',
-                                title: 'Adaptabilité fullstack',
-                                description: 'Je développe des solutions complètes, du front au back, en choisissant les bons outils pour chaque projet.',
-                            },
-                            {
-                                image: '/images/png/slide_2.png',
-                                title: 'Compréhension métier',
-                                description: 'Je cherche à comprendre vos enjeux avant d’écrire une ligne de code, pour proposer une solution efficace et durable.',
-                            },
-                            {
-                                image: '/images/png/slide_3.png',
-                                title: 'Collaboration agile',
-                                description: 'Habitué aux méthodes agiles, je m’intègre facilement à vos équipes pour avancer de façon fluide et structurée.',
-                            },
-                            {
-                                image: '/images/png/slide_4.png',
-                                title: 'Rigueur et évolution continue',
-                                description: 'Je code avec précision, j’écris des tests, je documente, et je continue d’apprendre chaque jour.',
-                            },
-                        ].map((arg, index) => (
+                        {slides.map(({ image, title, description }, index) => (
                             <div
                                 key={index}
                                 className='relative rounded-lg shadow-md overflow-hidden max-w-[250px] w-full h-[300px] flex items-end hover:scale-105 transform transition-transform duration-200'
                                 style={{
-                                    backgroundImage: `url(${arg.image})`,
+                                    backgroundImage: `url(${image})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
                                 }}
@@ -81,8 +65,8 @@ const HomePage: React.FC = () => {
                                 <div className='absolute inset-0 bg-black/50 dark:bg-black/60 z-0' />
                                 {/* Text content */}
                                 <div className='relative z-10 text-white text-center p-4'>
-                                    <h3 className='text-lg font-semibold mb-2'>{arg.title}</h3>
-                                    <p className='text-sm'>{arg.description}</p>
+                                    <h3 className='text-lg font-semibold mb-2'>{title}</h3>
+                                    <p className='text-sm'>{description}</p>
                                 </div>
                             </div>
                         ))}
