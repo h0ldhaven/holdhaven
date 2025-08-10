@@ -148,53 +148,6 @@ const HomePage: React.FC = () => {
                     </div>
                 </section>
 
-                {/* Section Streameur */}
-                <section className='flex flex-col md:flex-row justify-between items-center my-12 bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg'>
-                    <div className='flex flex-col justify-center items-center md:w-1/2 w-full mb-8 md:mb-0'>
-                        <img 
-                            src='/images/webp/twitch_background.webp' 
-                            alt='Image de développeur'
-                            className='w-full max-w-3xs md:max-w-2xs lg:max-w-xs xl:max-w-md h-auto rounded-lg'
-                        />
-                        {/* Badges des jeux */}
-                        <div className='flex flex-wrap justify-start mt-6 gap-4'>
-                            <div className='flex flex-wrap gap-2 items-center justify-center'>
-                                <img src='https://img.shields.io/badge/-000000?style=flat-square&logo=steam&logoColor=white' className='w-12 h-12 object-cover rounded-full' alt='Steam' />
-                                <img src='https://img.shields.io/badge/-313131?style=flat-square&logo=epicgames&logoColor=white' className='w-12 h-12 object-cover rounded-full' alt='Epic Games' />
-                                <img src='https://img.shields.io/badge/-000000?style=flat-square&logo=ubisoft&logoColor=white' className='w-12 h-12 object-cover rounded-full' alt='Ubisoft' />
-                                <img src='https://img.shields.io/badge/-FCAF17?style=flat-square&logo=rockstargames&logoColor=white' className='w-12 h-12 object-cover rounded-full' alt='Rockstar Games' />
-                                <img src='https://img.shields.io/badge/-000000?style=flat-square&logo=ea&logoColor=white' className='w-12 h-12 object-cover rounded-full' alt='EA' />
-                                <img src='https://img.shields.io/badge/-86328A?style=flat-square&logo=gog.com&logoColor=white' className='w-12 h-12 object-cover rounded-full' alt='GOG' />
-                            </div>
-                        </div>
-                    </div>
-                    <div className='md:w-1/2 w-full md:text-left text-center'>
-                        <h2 className='text-3xl font-semibold mb-4 text-gray-800 dark:text-gray-100'>Streameur Gaming & Tech sur Twitch</h2>
-
-                        <p className='text-xl mb-4 text-gray-700 dark:text-gray-200'>
-                            Sur Twitch, je me nomme <strong>h0ldhaven</strong>, mais tout le monde m'appelle <strong>h0ldy</strong>.
-                        </p>
-
-                        <div className='w-24 mx-auto md:mx-0 mb-4 border-t-4 border-purple-700 rounded-full'></div>
-
-                        <p className='text-xl mb-4 text-gray-700 dark:text-gray-200'>
-                            J'ai commencé le stream en 2017. Depuis, je fais du multi-gaming, avec une préférence pour les jeux de survie, simulation & bac à sable.
-                        </p>
-
-                        <div className='w-24 mx-auto md:mx-0 mb-4 border-t-4 border-purple-700 rounded-full'></div>
-
-                        <p className='text-lg mb-8 text-gray-700 dark:text-gray-200'>
-                            Selon mes envies du moment, tu peux retrouver d'autres types de jeux, mais aussi des sessions de <strong>dev</strong> (codage) ou des discussions techniques. Même pendant le jeu, j’aime partager mon expérience, mes connaissances, et échanger avec la communauté — que ce soit sur le gameplay, la stratégie ou les aspects techniques.
-                        </p>
-                        <a
-                            href='/streams'
-                            className='px-6 py-3 bg-purple-700 hover:bg-purple-800 rounded-lg text-lg font-semibold transition transform hover:scale-105'
-                        >
-                            Ma page de stream
-                        </a>
-                    </div>
-                </section>
-
                 {/* Message de construction */}
                 <p className='text-lg mt-8 mb-8 italic text-gray-700 dark:text-gray-300'>
                     ⚠️ Le site est en pleine construction, merci de revenir bientôt pour plus de contenu !
