@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import type { InfoCard } from '../../types/InfoCard';
+import type { CarouselCard } from '../../types/CarouselCard';
 
 interface InfoCardCarouselProps {
-    items: InfoCard[];
+    items: CarouselCard[];
     speed: number;
 }
 
-const InfoCardCarousel: React.FC<InfoCardCarouselProps> = ({ items, speed }) => {
+const CarouselCards: React.FC<InfoCardCarouselProps> = ({ items, speed }) => {
     const controls = useAnimation();
     const [queue, setQueue] = useState(items);
     const [isPaused, setIsPaused] = useState(false);
@@ -119,16 +119,16 @@ const InfoCardCarousel: React.FC<InfoCardCarouselProps> = ({ items, speed }) => 
                             <img
                                 src={imageUrl}
                                 alt={title}
-                                className='w-full h-full object-contain rounded-lg'
+                                className='w-full h-full object-contain rounded-lg dark:bg-neutral-100/20 bg-neutral-200/40 p-2'
                                 draggable={false}
                             />
                         </div>
 
                         {hoveredId === id.toString() && (
                             <div className='
-                                absolute bottom-14 left-0 right-0
-                                bg-black bg-opacity-70
-                                p-2 text-white text-center
+                                absolute bottom-12 left-0 right-0
+                                bg-gray-700 dark:bg-gray-600 bg-opacity-80
+                                p-2 m-4 text-white text-center
                                 text-xs sm:text-sm
                                 transition-opacity duration-300
                                 whitespace-normal break-words
@@ -140,7 +140,7 @@ const InfoCardCarousel: React.FC<InfoCardCarouselProps> = ({ items, speed }) => 
                         )}
                         
                         <div className='
-                            bg-black bg-opacity-60
+                            bg-gray-700 dark:bg-gray-600 bg-opacity-80
                             p-2 text-white text-center text-sm font-semibold
                             rounded-md
                         '
@@ -154,4 +154,4 @@ const InfoCardCarousel: React.FC<InfoCardCarouselProps> = ({ items, speed }) => 
     );
 };
 
-export default InfoCardCarousel;
+export default CarouselCards;

@@ -4,14 +4,14 @@ import Footer from '../components/Footer';
 import homeImageCard from '../data/homeImageCard.json';
 import homeStacks from '../data/homeStacks.json';
 import { ImageCard } from '../interfaces/ImageCard';
-import type { InfoCard } from '../types/InfoCard';
-import InfoCardCarousel from '../components/reusable-ui/InfoCardCarousel';
+import type { CarouselCard } from '../types/CarouselCard';
+import CarouselCards from '../components/reusable-ui/CarouselCards';
 
 const HomePage: React.FC = () => {
 
     const slides: ImageCard[] = homeImageCard;
 
-    const stackData: InfoCard[] = homeStacks;
+    const stackData: CarouselCard[] = homeStacks;
 
     return (
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out' role='main'>
@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
                 {/* Section Stacks */}
                 <section className='w-full bg-gray-300 dark:bg-gray-700 p-6 my-4 rounded-lg shadow-md flex flex-col justify-center items-center'>
                     <h2 className='text-2xl font-bold mb-4'>Mes stacks</h2>
-                    <InfoCardCarousel items={stackData} speed={50} />
+                    <CarouselCards items={stackData} speed={50} />
                 </section>
             </div>
             <Footer />

@@ -1,4 +1,4 @@
-export type InfoCard = {
+export type CarouselCard = {
   id: number;
   title: string;
   description: string;
