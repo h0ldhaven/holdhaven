@@ -127,7 +127,7 @@ const CarouselCards: React.FC<InfoCardCarouselProps> = ({ items, speed }) => {
                         {hoveredId === id.toString() && (
                             <div className='
                                 absolute bottom-12 left-0 right-0
-                                bg-gray-700 dark:bg-gray-600 bg-opacity-80
+                                bg-gray-700/90 dark:bg-neutral-700/90 bg-opacity-80
                                 p-2 m-4 text-white text-center
                                 text-xs sm:text-sm
                                 transition-opacity duration-300
