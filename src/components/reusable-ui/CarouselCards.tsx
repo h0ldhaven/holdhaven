@@ -33,6 +33,18 @@ const CarouselCards: React.FC<InfoCardCarouselProps> = ({ items, speed }) => {
         return () => window.removeEventListener('resize', updateWidth);
     }, []);
 
+    useEffect(() => {
+        const handleVisibility = () => {
+            if (!document.hidden) {
+            // Quand on revient sur la page, on reset juste la référence de temps
+                lastTimeRef.current = null;
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibility);
+        return () => document.removeEventListener('visibilitychange', handleVisibility);
+    }, []);
+
     // Animation frame loop avec vitesse constante
     const animate = (time: number) => {
         if (isPaused || !cardWidth) {
@@ -42,10 +54,16 @@ const CarouselCards: React.FC<InfoCardCarouselProps> = ({ items, speed }) => {
         }
 
         if (lastTimeRef.current !== null) {
-            const deltaTime = (time - lastTimeRef.current) / 1000; // en secondes
-            const distance = speed * deltaTime; // px à avancer
-
+            // en secondes
+            let deltaTime = (time - lastTimeRef.current) / 1000;
+            
+            // On limite à 0.1s pour éviter les énormes sauts
+            if (deltaTime > 0.1) deltaTime = 0.1;
+            
+            // px à avancer
+            const distance = speed * deltaTime;
             xRef.current -= distance;
+
             if (xRef.current <= -cardWidth) {
                 xRef.current += cardWidth;
                 setQueue((prev) => {
