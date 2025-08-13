@@ -1,0 +1,128 @@
+[
+    {
+        "id": 1,
+        "title": "React",
+        "description": "Bibliothèque JavaScript pour construire des interfaces utilisateur réactives et performantes.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+        "id": 2,
+        "title": "Vite",
+        "description": "Outil de build ultra-rapide pour projets frontend modernes, avec support natif ESModules.",
+        "imageUrl": "https://vitejs.dev/logo.svg"
+    },
+    {
+        "id": 3,
+        "title": "TypeScript",
+        "description": "Surensemble typé de JavaScript apportant sécurité et autocomplétion au dev.",
+        "imageUrl": "https://cdn.worldvectorlogo.com/logos/typescript.svg"
+    },
+    {
+        "id": 4,
+        "title": "JavaScript",
+        "description": "Langage de programmation principal du web, dynamique et multi-paradigme.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+    },
+    {
+        "id": 5,
+        "title": "Tailwind CSS",
+        "description": "Framework CSS utilitaire ultra-rapide, mobile-first, et entièrement personnalisable.",
+        "imageUrl": "https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg"
+    },
+    {
+        "id": 6,
+        "title": "Bootstrap",
+        "description": "Framework CSS populaire pour créer des sites responsives rapidement.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg"
+    },
+    {
+        "id": 7,
+        "title": "HTML5",
+        "description": "Langage de balisage standard pour structurer le contenu web.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/2048px-HTML5_Badge.svg.png"
+    },
+    {
+        "id": 8,
+        "title": "CSS3",
+        "description": "Langage de style pour la mise en forme des documents HTML.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
+    },
+    {
+        "id": 9,
+        "title": "Vanilla JS",
+        "description": "JavaScript pur sans framework, pour un contrôle total et la légèreté.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+    },
+    {
+        "id": 10,
+        "title": "Sass",
+        "description": "Extension CSS avec variables, mixins et fonctions pour un code maintenable.",
+        "imageUrl": "https://sass-lang.com/assets/img/styleguide/seal-color.png"
+    },
+    {
+        "id": 11,
+        "title": "Laravel",
+        "description": "Framework PHP moderne, élégant, pour construire des applications web robustes.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg"
+    },
+    {
+        "id": 12,
+        "title": "PHP",
+        "description": "Langage serveur populaire, simple et puissant, utilisé pour le web dynamique.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg"
+    },
+    {
+        "id": 13,
+        "title": "MySQL",
+        "description": "Système de gestion de bases de données relationnelles très utilisé.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg"
+    },
+    {
+        "id": 14,
+        "title": "MongoDB",
+        "description": "Base de données NoSQL orientée documents, flexible et scalable.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Mongodb-svgrepo-com.svg"
+    },
+    {
+        "id": 15,
+        "title": "Java",
+        "description": "Langage de programmation orienté objet, robuste et portable.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
+    },
+    {
+        "id": 16,
+        "title": "Lua",
+        "description": "Langage léger et rapide, souvent utilisé pour le scripting et jeux vidéo.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Lua-Logo.svg"
+    },
+    {
+        "id": 17,
+        "title": "Git",
+        "description": "Système de gestion de versions distribué, indispensable au dev moderne.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2048px-Git_icon.svg.png"
+    },
+    {
+        "id": 18,
+        "title": "GitHub & GitHub Pages",
+        "description": "Plateforme d’hébergement de code source avec gestion collaborative via Git.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+    },
+    {
+        "id": 19,
+        "title": "Vercel",
+        "description": "Plateforme de déploiement frontend avec CDN et intégration git facile.",
+        "imageUrl": "https://static.wikia.nocookie.net/logopedia/images/a/a7/Vercel_favicon.svg"
+    },
+    {
+        "id": 20,
+        "title": "OVH Hosting",
+        "description": "Hébergeur cloud européen offrant serveurs, VPS et services managés.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/OVH_Logo.svg"
+    },
+    {
+        "id": 21,
+        "title": "Cloudflare",
+        "description": "Service de CDN, sécurité web et optimisation des performances.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png"
+    }
+]

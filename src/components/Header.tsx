@@ -11,8 +11,8 @@ const Header: React.FC = () => {
                 <div className='flex flex-col items-center justify-center w-full h-full md:pt-8 md:pb-8 leading-none text-center text-white font-roboto uppercase z-10'>
                     <Link to='/' aria-label="Bouton retour a l'acceuil" role='button'>
                         <img
-                            className='max-w-28 sm:max-w-34 lg:max-w-42 object-contain pb-4 z-50'
-                            src='images/webp/profil.webp'
+                            className='max-w-28 sm:max-w-34 lg:max-w-42 object-contain p-2 z-50 rounded-full'
+                            src='images/png/profil.png'
                             loading='lazy'
                             alt='Image de profil de holdhaven'
                             aria-hidden='true'
