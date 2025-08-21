@@ -28,6 +28,39 @@ const Header: React.FC = () => {
         };
     }, [menuOpen]);
 
+    const menuItems = [
+        { label: 'Accueil', to: '/' },
+        { label: 'À propos', to: '/legal' },
+        { label: 'Projets', to: '/projects' },
+        { label: 'Contact', to: '/contact' }
+    ];
+
+    const renderMenu = (isMobile: boolean) => (
+        <ul className={`flex flex-col text-white uppercase ${isMobile ? 'py-6 px-4 text-center items-center' : 'py-4 px-8'}`}>
+            {menuItems.map((item, index) => (
+                <React.Fragment key={item.to}>
+                    <li className='py-2 w-full'>
+                        <Link to={item.to} onClick={() => setMenuOpen(false)} className='block w-full'>
+                            {item.label}
+                        </Link>
+                    </li>
+
+                    {/* Barre entre chaque lien sauf le dernier */}
+                    {index < menuItems.length - 1 && (
+                        <li className='w-full'>
+                            <div className={`mx-auto ${isMobile ? 'w-1/2' : 'w-full'} border-t border-neutral-400`}></div>
+                        </li>
+                    )}
+                </React.Fragment>
+            ))}
+
+            {/* SwitchButton à la fin, sans barre après */}
+            <li className='py-2 pt-4'>
+                <SwitchButton firstIcon={FaMoon} secondIcon={FaSun} />
+            </li>
+        </ul>
+    );
+
     return(
         <header className='relative bg-blue-800/80 dark:bg-cyan-800/90' ref={menuRef}>
             <div className='flex items-center justify-between px-4 py-4'>
@@ -48,24 +81,8 @@ const Header: React.FC = () => {
 
                     {/* Desktop / MD+ collé au bouton */}
                     {menuOpen && (
-                        <div className='hidden md:block absolute top-full right-0 w-auto border-1 bg-blue-800/80 dark:bg-cyan-700/90 rounded-md shadow-lg'>
-                            <ul className='flex flex-col gap-4 py-4 px-8 text-white uppercase'>
-                                <li>
-                                    <Link to='/' onClick={() => setMenuOpen(false)}>Accueil</Link>
-                                </li>
-                                <li>
-                                    <Link to='/legal' onClick={() => setMenuOpen(false)}>À propos</Link>
-                                </li>
-                                <li>
-                                    <Link to='/projects' onClick={() => setMenuOpen(false)}>Projets</Link>
-                                </li>
-                                <li>
-                                    <Link to='/contact' onClick={() => setMenuOpen(false)}>Contact</Link>
-                                </li>
-                                <li>
-                                    <SwitchButton firstIcon={FaMoon} secondIcon={FaSun} />
-                                </li>
-                            </ul>
+                        <div className='hidden md:block absolute top-full right-0 w-auto border bg-blue-800/80 dark:bg-cyan-700/90 rounded-md shadow-lg'>
+                            {renderMenu(false)}
                         </div>
                     )}
                 </div>
@@ -73,24 +90,8 @@ const Header: React.FC = () => {
 
             {/* Mobile / SM full width sous le header */}
             {menuOpen && (
-                <div className='block md:hidden absolute top-full left-0 w-screen border-1 border-neutral-400 bg-blue-800/80 dark:bg-cyan-700/90 shadow-lg z-20'>
-                    <ul className='flex flex-col gap-4 py-6 px-4 text-white uppercase text-center items-center'>
-                        <li>
-                            <Link to='/' onClick={() => setMenuOpen(false)}>Accueil</Link>
-                        </li>
-                        <li>
-                            <Link to='/legal' onClick={() => setMenuOpen(false)}>À propos</Link>
-                        </li>
-                        <li>
-                            <Link to='/projects' onClick={() => setMenuOpen(false)}>Projets</Link>
-                        </li>
-                        <li>
-                            <Link to='/contact' onClick={() => setMenuOpen(false)}>Contact</Link>
-                        </li>
-                        <li>
-                            <SwitchButton firstIcon={FaMoon} secondIcon={FaSun} />
-                        </li>
-                    </ul>
+                <div className='block md:hidden absolute top-full left-0 w-screen border bg-blue-800/80 dark:bg-cyan-700/90 shadow-lg z-20'>
+                    {renderMenu(true)}
                 </div>
             )}
         </header>
