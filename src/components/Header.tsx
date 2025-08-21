@@ -32,7 +32,7 @@ const Header: React.FC = () => {
         { label: 'Accueil', to: '/' },
         { label: 'À propos', to: '/legal' },
         { label: 'Projets', to: '/projects' },
-        { label: 'Contact', to: '/contact' }
+        { label: 'Contact', to: '/contact' },
     ];
 
     const renderMenu = (isMobile: boolean) => (
@@ -54,10 +54,20 @@ const Header: React.FC = () => {
                 </React.Fragment>
             ))}
 
-            {/* SwitchButton à la fin, sans barre après */}
-            <li className='py-2 pt-4'>
-                <SwitchButton firstIcon={FaMoon} secondIcon={FaSun} />
-            </li>
+            <div className='w-full flex flex-col items-center'>
+                <div
+                    className={`mx-auto ${isMobile ? 'w-1/2' : 'w-full'} border-t dark:border-neutral-400 border-neutral-800`}
+                ></div>
+
+                {/* SwitchButton à la fin, sans barre après */}
+                <li className='py-2'>
+                    <SwitchButton firstIcon={FaMoon} secondIcon={FaSun} />
+                </li>
+
+                <div
+                    className={`mx-auto ${isMobile ? 'w-1/2' : 'w-full'} border-t dark:border-neutral-400 border-neutral-800`}
+                ></div>
+            </div>
         </ul>
     );
 
@@ -81,7 +91,7 @@ const Header: React.FC = () => {
 
                     {/* Desktop / MD+ collé au bouton */}
                     {menuOpen && (
-                        <div className='hidden md:block absolute top-full right-0 w-auto border bg-blue-800/80 dark:bg-cyan-700/90 rounded-md shadow-lg'>
+                        <div className='hidden md:block absolute top-full right-0 w-auto border bg-blue-800/80 dark:bg-cyan-700/90 rounded-md shadow-lg z-20'>
                             {renderMenu(false)}
                         </div>
                     )}
