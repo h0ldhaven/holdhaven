@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                     {/* Barre entre chaque lien sauf le dernier */}
                     {index < menuItems.length - 1 && (
                         <li className='w-full'>
-                            <div className={`mx-auto ${isMobile ? 'w-1/2' : 'w-full'} border-t border-neutral-400`}></div>
+                            <div className={`mx-auto ${isMobile ? 'w-1/2' : 'w-full'} border-t dark:border-neutral-400 border-neutral-800`}></div>
                         </li>
                     )}
                 </React.Fragment>
@@ -67,14 +67,14 @@ const Header: React.FC = () => {
                 {/* Logo */}
                 <Link to='/'>
                     <img
-                        className='w-16 sm:w-24 md:w-32 rounded-full'
+                        className='w-16 sm:w-24 md:w-32 rounded-full ml-20'
                         src='images/png/profil.png'
                         alt='Logo'
                     />
                 </Link>
 
                 {/* Burger + menu wrapper */}
-                <div className='relative'>
+                <div className='relative mr-20'>
                     <button onClick={toggleMenu} className='text-white z-30 relative'>
                         {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                     </button>
