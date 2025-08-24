@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./public/images/png/profil.png" style="width: 10rem" alt="website logo">
+    <img src="./public/images/png/profil.png" style="width: 10rem; border-radius:50%" alt="website logo">
     <h1>🌐 holdhaven.fr</h1>
 </div>
 
