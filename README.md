@@ -1,4 +1,7 @@
-# 🌐 holdhaven.fr - React + TypeScript + Vite
+<div align="center">
+    <img src="./public/images/png/profil.png" style="width: 10rem" alt="">
+    <h1>🌐 holdhaven.fr</h1>
+</div>
 
   <div align="center">
 
