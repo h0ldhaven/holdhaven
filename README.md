@@ -65,7 +65,7 @@ Avant de commit, il est recommandé de vérifier le code avec ESLint :
 ```sh
 $ npm run lint
 ```
-Cette commande analysera tous les fichiers et te donnera des warnings pour :
+Cette commande analysera tous les fichiers et vous donnera des warnings pour :
 - Variables non utilisées
 - Mauvais style d’indentation
 - Quotes incorrectes
