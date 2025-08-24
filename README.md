@@ -23,7 +23,6 @@
 <div align="center">
   <img src="https://img.shields.io/badge/website-online-brightgreen?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website Online"/>
   <img src="https://img.shields.io/badge/hosted%20on-OVH-123F6D?style=for-the-badge&logo=ovh&logoColor=white" alt="Hosted on OVH"/>
-  <img src="https://img.shields.io/badge/made%20with-%E2%9D%A4-ff69b4?style=for-the-badge" alt="Made with Love by holdhaven">
 </div>
 
 ---
@@ -47,11 +46,6 @@ Elle me sert à la fois de vitrine pour présenter mes compétences en développ
 ```sh
 $ git clone https://github.com/h0ldhaven/holdhaven.git
 ```
-#### To start the server :
-```sh
-npm run dev
-```
-
 ## Eslint Rules :
 - Typescipt eslint recommended rules
 - Indentation width: **4 space**
@@ -61,9 +55,22 @@ npm run dev
 
 In order to keep a clean code base, devs might use eslint before commits
 
+---
+
+### Commands
+
+```sh
+npm run dev
+```
+This command will start the project in dev mode, each modification will be updates on save
+
+It allows the devs to create without having to refresh the pages each time
+
 ```sh
 $ npm run lint
 ```
+This command will check each file for eslint rules violation such as double quotes, unused variables or wrong indentation width and raise warnings
+
 
 ```sh
 $ npm run build
@@ -74,3 +81,7 @@ This will allow devs to have a built version to export it or see if the project 
 1. Create a ``.env.local`` in the main folder which will be ignored in the commit
 2. In this ``.env.local`` add ``CI=true``
 3. Now run ``npm run build``
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Made with ❤️ by H0ldhaven?style=for-the-badge" alt="Made with Love by holdhaven">
+</div>
