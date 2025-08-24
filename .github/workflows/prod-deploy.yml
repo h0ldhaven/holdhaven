@@ -14,6 +14,14 @@ jobs:
         with:
           ref: main
 
+      - name: Check tag points to main
+        run: |
+            TAG_COMMIT=$(git rev-parse $GITHUB_REF)
+            MAIN_COMMIT=$(git rev-parse origin/main)
+            if [ "$TAG_COMMIT" != "$MAIN_COMMIT" ]; then
+                echo "Warning: tag not on main, but workflow will still checkout main."
+            fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
