@@ -1,0 +1,128 @@
+name: CI deploy in production
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check tag points to main
+        run: |
+            TAG_COMMIT=$(git rev-parse $GITHUB_REF)
+            MAIN_COMMIT=$(git rev-parse origin/main)
+            if [ "$TAG_COMMIT" != "$MAIN_COMMIT" ]; then
+                echo "Warning: tag not on main, but workflow will still checkout main."
+            fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject env variables into .env.production
+        run: |
+          echo "VITE_EMAILJS_SERVICE_ID=${{ secrets.VITE_EMAILJS_SERVICE_ID }}" >> .env.production
+          echo "VITE_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}" >> .env.production
+          echo "VITE_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}" >> .env.production
+          echo "VITE_CLOUDFLARE_TURNSTILE_SITEKEY=${{ secrets.VITE_CLOUDFLARE_TURNSTILE_SITEKEY }}" >> .env.production
+
+      - name: Build project
+        env:
+          VITE_CLOUDFLARE_TURNSTILE_SITEKEY: ${{ secrets.VITE_CLOUDFLARE_TURNSTILE_SITEKEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+        run: npm run build
+        
+      - name: Add .htaccess to dist
+        run: cp ./deploy/.htaccess ./dist/.htaccess
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ./dist/
+
+  release-assets:
+    runs-on: ubuntu-22.04
+    needs: build
+    permissions: write-all
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: ./build/
+
+      - name: Create ZIP build archive
+        run: zip -r ../build.zip ./build.
+
+      - name: Create TAR.GZ build archive
+        run: tar -czvf ../build.tar.gz -C ./build .
+
+      - name: Gets latest created release info
+        id: latest_release_info
+        uses: jossef/action-latest-release-info@v1.2.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload ZIP build artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
+            asset_path: ../build.zip
+            asset_name: build.zip
+            asset_content_type: application/zip
+
+      - name: Upload TAR.GZ build artifacts
+        uses: actions/upload-release-asset@v1
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
+            asset_path: ../build.tar.gz
+            asset_name: build.tar.gz
+            asset_content_type: application/x-gtar
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: build
+
+    steps:
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: ./dist/
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via SFTP
+        env:
+          SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_TARGET_PATH: ${{ secrets.SFTP_TARGET_PROD_PATH }}
+
+        run: |
+          lftp -u "$SFTP_USER","$SFTP_PASSWORD" sftp://$SFTP_SERVER <<EOF
+            set sftp:auto-confirm yes
+            set ftp:passive-mode yes
+            mirror -R ./dist $SFTP_TARGET_PATH --delete --verbose --exclude .htaccess
+          EOF
