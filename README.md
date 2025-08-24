@@ -1,13 +1,13 @@
 # 🌐 holdhaven.fr - React + TypeScript + Vite
 
 <div align="center">
-  <a href="https://github.com/h0ldhaven/holdhaven/actions">
+  <a href="https://github.com/h0ldhaven/holdhaven/actions" style="text-decoration:none;">
     <img src="https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=main" alt="Commit CI - Main"/>
   </a>
-  <a href="https://github.com/h0ldhaven/holdhaven/actions">
+  <a href="https://github.com/h0ldhaven/holdhaven/actions" style="text-decoration:none;">
     <img src="https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=dev" alt="Commit CI - Dev"/>
   </a>
-  <a href="https://github.com/h0ldhaven/holdhaven/releases">
+  <a href="https://github.com/h0ldhaven/holdhaven/releases" style="text-decoration:none;">
     <img src="https://img.shields.io/github/v/release/h0ldhaven/holdhaven" alt="Release"/>
   </a>
 </div>
