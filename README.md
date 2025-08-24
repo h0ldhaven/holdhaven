@@ -13,6 +13,8 @@
       <img style="margin: 0 1em" src="https://img.shields.io/badge/react-19.1.1-61DAFB?logo=react&style=for-the-badge" alt="React 19.1.1">
   </div>
 
+---
+
   **Holdhaven.fr** est mon application personnelle, développée avec React et TypeScript, et propulsée par Vite.  
   Elle me sert à la fois de vitrine pour présenter mes compétences en développement web et de terrain de jeu pour tester de nouvelles technologies ou fonctionnalités. 🚀
 
