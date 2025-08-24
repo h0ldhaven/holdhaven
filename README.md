@@ -83,5 +83,5 @@ This will allow devs to have a built version to export it or see if the project 
 3. Now run ``npm run build``
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Made with ❤️ by H0ldhaven?style=for-the-badge" alt="Made with Love by holdhaven">
+  <img src="https://img.shields.io/badge/Made with ❤️ by H0ldhaven-333?style=for-the-badge" alt="Made with Love by holdhaven">
 </div>
