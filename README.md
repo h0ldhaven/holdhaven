@@ -8,6 +8,9 @@
     <img style="margin: 0 1em" src="https://img.shields.io/badge/react-19.1.1-61DAFB?logo=react&style=for-the-badge" alt="React 19.1.1">
     <img style="margin: 0 1em" src="https://img.shields.io/badge/typescript-5.7.2-3178C6?logo=typescript&style=for-the-badge&logoColor=white" alt="TypeScript 5.7.2">
     <img src="https://img.shields.io/badge/vite-6.3.1-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite 6.3.1"/>
+    <img src="https://img.shields.io/badge/eslint-9.22.0-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint"/>
+    <img src="https://img.shields.io/badge/tailwindcss-4.1.4-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+    <img src="https://img.shields.io/badge/react-icons-5.5.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React Icons"/>
 </div>
 
 <div align="center">
@@ -21,8 +24,8 @@
 ---
 
 <div align="center">
-  <img src="https://img.shields.io/badge/website-online-brightgreen?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website Online"/>
-  <img src="https://img.shields.io/badge/hosted%20on-OVH-123F6D?style=for-the-badge&logo=ovh&logoColor=white" alt="Hosted on OVH"/>
+    <img src="https://img.shields.io/badge/website-online-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website Online"/>
+    <img src="https://img.shields.io/badge/hosted%20on-OVH-123F6D?style=for-the-badge&logo=ovh&logoColor=white" alt="Hosted on OVH"/>
 </div>
 
 ---
@@ -40,47 +43,56 @@ Elle me sert à la fois de vitrine pour présenter mes compétences en développ
 
 ---
 
-<h2>How to install</h2>
+## ⚙️ Commands & Setup
 
-#### Clone the Project :
+### 1️⃣ Cloner et installer le projet
+Pour démarrer le projet en local, clonez le repo puis installez les dépendances :
 ```sh
 $ git clone https://github.com/h0ldhaven/holdhaven.git
+cd holdhaven
+npm install
 ```
-## Eslint Rules :
-- Typescipt eslint recommended rules
-- Indentation width: **4 space**
-- Trailing semicolon: **required**
-- Prefer const: **off** *(Temporary due to missing methods)*
-- Quotes: **single** *(Magic quotes are allowed if template string)*
 
-In order to keep a clean code base, devs might use eslint before commits
+### 2️⃣ ESLint Rules
+Pour maintenir un code propre et cohérent, voici les règles appliquées :
+- TypeScript eslint recommended rules
+- Indentation : 4 espaces
+- Trailing semicolon : obligatoire
+- Quotes : single (les template strings sont autorisées)
+- prefer-const : désactivé temporairement pour certaines méthodes manquantes
 
----
-
-### Commands
-
-```sh
-npm run dev
-```
-This command will start the project in dev mode, each modification will be updates on save
-
-It allows the devs to create without having to refresh the pages each time
-
+Avant de commit, il est recommandé de vérifier le code avec ESLint :
 ```sh
 $ npm run lint
 ```
-This command will check each file for eslint rules violation such as double quotes, unused variables or wrong indentation width and raise warnings
+Cette commande analysera tous les fichiers et te donnera des warnings pour :
+- Variables non utilisées
+- Mauvais style d’indentation
+- Quotes incorrectes
+- Semicolons manquants
 
+### 3️⃣ Lancer le projet en développement
+Pour travailler en local avec hot-reload automatique :
+```sh
+npm run dev
+```
+Chaque modification dans le code sera automatiquement reflétée dans le navigateur sans avoir besoin de refresh.
 
+### 4️⃣ Build du projet
+Pour générer la version de production optimisée :
 ```sh
 $ npm run build
 ```
+Le dossier dist/ contiendra la version prête à être déployée sur votre serveur.
 
-This will allow devs to have a built version to export it or see if the project is correctly build
-**If you want to be really sure that the project can be built in prod or preprod follow these instructions**
-1. Create a ``.env.local`` in the main folder which will be ignored in the commit
-2. In this ``.env.local`` add ``CI=true``
-3. Now run ``npm run build``
+### 5️⃣ Preview de la build
+Pour tester localement la build optimisée avant déploiement :
+```sh
+$ npm run preview
+```
+Cette commande servira le contenu de dist/ localement avec un serveur statique léger.
+
+---
 
 <div align="center">
   <img src="https://img.shields.io/badge/Made with ❤️ by H0ldhaven-333?style=for-the-badge" alt="Made with Love by holdhaven">
