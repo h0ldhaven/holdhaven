@@ -43,13 +43,34 @@ Elle me sert à la fois de vitrine pour présenter mes compétences en développ
 
 <h2>How to install</h2>
 
-### Developer
-#### Clone the project
+#### Clone the Project :
 ```sh
 $ git clone https://github.com/h0ldhaven/holdhaven.git
 ```
-#### With npm
-To start the server
+#### To start the server :
 ```sh
 npm run dev
 ```
+
+## Eslint Rules :
+- Typescipt eslint recommended rules
+- Indentation width: **4 space**
+- Trailing semicolon: **required**
+- Prefer const: **off** *(Temporary due to missing methods)*
+- Quotes: **single** *(Magic quotes are allowed if template string)*
+
+In order to keep a clean code base, devs might use eslint before commits
+
+```sh
+$ npm run lint
+```
+
+```sh
+$ npm run build
+```
+
+This will allow devs to have a built version to export it or see if the project is correctly build
+**If you want to be really sure that the project can be built in prod or preprod follow these instructions**
+1. Create a ``.env.local`` in the main folder which will be ignored in the commit
+2. In this ``.env.local`` add ``CI=true``
+3. Now run ``npm run build``
