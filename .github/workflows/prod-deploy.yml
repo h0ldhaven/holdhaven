@@ -64,13 +64,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: ./build/
+          path: ./dist/
 
       - name: Create ZIP build archive
-        run: zip -r ../build.zip ./build.
+        run: zip -r ../build.zip ./dist
 
       - name: Create TAR.GZ build archive
-        run: tar -czvf ../build.tar.gz -C ./build .
+        run: tar -czvf ../build.tar.gz -C ./dist .
 
       - name: Gets latest created release info
         id: latest_release_info
