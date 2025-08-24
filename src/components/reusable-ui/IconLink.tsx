@@ -1,15 +1,7 @@
 import { JSX } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { Link } from 'react-router-dom';
-
-interface IconLinkProps {
-    link: string;
-    icon: IconDefinition;
-    className?: string;
-    name?: string;
-    label?: string;
-}
+import { IconLinkProps } from '../../interfaces/IconLinkProps';
 
 export default function IconLink({ link, icon, className, name, label }: IconLinkProps): JSX.Element {
 

@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TurnStile from '../components/TurnStile';
 import { sendContactEmail } from '../utils/email';
-
-type FormData = {
-    name: string;
-    email: string;
-    message: string;
-};
+import { FormData } from '../types/FormData';
 
 const siteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITEKEY;
 
@@ -66,6 +61,10 @@ const ContactPage: React.FC = () => {
             setLoading(false);
         }
     };
+
+    const handleVerify = useCallback((token: string) => {
+        setTurnstileToken(token);
+    }, []);
 
     return(
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out'>
@@ -127,7 +126,7 @@ const ContactPage: React.FC = () => {
 
                         <TurnStile
                             sitekey={siteKey}
-                            onVerify={(token) => setTurnstileToken(token)}
+                            onVerify={handleVerify}
                         />
                     </div>
                 </form>

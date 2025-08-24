@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "title": "React",
+        "description": "React structure mes projets frontend avec ses composants réutilisables. Cela réduit le code dupliqué, organise les interfaces et facilite la maintenance sur le long terme.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+        "id": 2,
+        "title": "Vite",
+        "description": "Vite est privilégié comme outil de build pour son démarrage quasi instantané et son bundling optimisé en production, permettant d’itérer rapidement et livrer des applications légères.",
+        "imageUrl": "https://vitejs.dev/logo.svg"
+    },
+    {
+        "id": 3,
+        "title": "TypeScript",
+        "description": "TypeScript sécurise mon code avec le typage statique. Cela limite les erreurs fréquentes, améliore l’autocomplétion et rend le code plus lisible pour moi comme pour les autres développeurs.",
+        "imageUrl": "https://cdn.worldvectorlogo.com/logos/typescript.svg"
+    },
+    {
+        "id": 4,
+        "title": "JavaScript",
+        "description": "JavaScript me permet de manipuler directement le DOM ou de créer des logiques sur mesure, offrant polyvalence pour tous mes projets web.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+    },
+    {
+        "id": 5,
+        "title": "Tailwind CSS",
+        "description": "Tailwind permet de gagner du temps sur le style tout en respectant la charte et en concevant des interfaces responsives, pensées mobile first.",
+        "imageUrl": "https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg"
+    },
+    {
+        "id": 6,
+        "title": "Bootstrap",
+        "description": "Bootstrap est utilisé quand j’ai besoin de mettre en place rapidement une interface avec une grille responsive déjà pensée, surtout pour des prototypes ou des pages nécessitant peu de personnalisation CSS.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg"
+    },
+    {
+        "id": 7,
+        "title": "HTML5",
+        "description": "Langage de balisage standard pour structurer le contenu web, HTML5 organise mes pages de manière sémantique pour que le contenu soit clair, structuré et accessible, ce qui facilite le référencement et la navigation..",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/2048px-HTML5_Badge.svg.png"
+    },
+    {
+        "id": 8,
+        "title": "CSS3",
+        "description": "CSS3 permet d’appliquer des mises en page réactives et des animations simples pour améliorer l’expérience utilisateur tout en gardant le code lisible et maintenable.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
+    },
+    {
+        "id": 9,
+        "title": "Vanilla JS",
+        "description": "JavaScript vanilla est utilisé lorsque le projet l’exige, pour garder un contrôle total sur le comportement des fonctionnalités, que ce soit pour des interactions simples ou plus complexes, sans dépendre de frameworks externes.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+    },
+    {
+        "id": 10,
+        "title": "Sass",
+        "description": "Sass permet de mieux organiser mes styles grâce aux variables et fonctions, ce qui facilite la maintenance des projets avec beaucoup de CSS.",
+        "imageUrl": "https://sass-lang.com/assets/img/styleguide/seal-color.png"
+    },
+    {
+        "id": 11,
+        "title": "Laravel",
+        "description": "Laravel est utilisé pour développer rapidement des applications web côté serveur avec une structure claire et des outils intégrés comme l’authentification et les API.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg"
+    },
+    {
+        "id": 12,
+        "title": "PHP",
+        "description": "PHP sert lorsque le projet nécessite du code serveur sans framework, pour manipuler directement la logique côté backend ou interagir avec la base de données.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg"
+    },
+    {
+        "id": 13,
+        "title": "MySQL",
+        "description": "MySQL sert à exploiter les bases de données relationnelles et garantir l’intégrité des données, en optimisant la structure et les relations entre les tables (cardinalité, contraintes, index).",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg"
+    },
+    {
+        "id": 14,
+        "title": "MongoDB",
+        "description": "MongoDB est choisi quand une base de données flexible est nécessaire pour stocker des données semi-structurées ou volumineuses.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Mongodb-svgrepo-com.svg"
+    },
+    {
+        "id": 15,
+        "title": "Java",
+        "description": "Java sert à développer des plugins, mods ou outils pour des applications et jeux vidéo, notamment avec Eclipse IDE pour organiser et compiler les projets efficacement.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
+    },
+    {
+        "id": 16,
+        "title": "Lua",
+        "description": "Lua est employé pour le développement de scripts dans des jeux vidéo ou applications complexes, en exploitant ses capacités d’extension et sa compatibilité avec différents moteurs.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Lua-Logo.svg"
+    },
+    {
+        "id": 17,
+        "title": "Git",
+        "description": "Git permet de gérer l’historique des projets, revenir sur des versions précédentes et structurer le développement, que ce soit pour du travail en solo ou en équipe.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2048px-Git_icon.svg.png"
+    },
+    {
+        "id": 18,
+        "title": "GitHub",
+        "description": "GitHub héberge les projets, versionne le code et centralise les dépôts, ce qui permet de gérer efficacement les projets personnels comme professionnels.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+    },
+    {
+        "id": 19,
+        "title": "GitHub Pages",
+        "description": "GitHub Pages est utilisé uniquement pour déployer certains projets statiques quand c’est approprié, comme des démonstrations ou sites portfolio.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+    },
+    {
+        "id": 20,
+        "title": "Vercel",
+        "description": "Vercel permet de déployer des projets front-end rapidement, avec des builds automatiques et une bonne gestion des mises à jour.",
+        "imageUrl": "https://static.wikia.nocookie.net/logopedia/images/a/a7/Vercel_favicon.svg"
+    },
+    {
+        "id": 21,
+        "title": "OVH Hosting",
+        "description": "OVH héberge de manière fiable et stable ses infrastructures serveur.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/OVH_Logo.svg"
+    },
+    {
+        "id": 22,
+        "title": "Cloudflare",
+        "description": "Cloudflare sécurise et optimise les sites : protection contre certaines menaces, optimisation du chargement, et gestion efficace du trafic web.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png"
+    }
+]
