@@ -13,6 +13,8 @@
     <img src="https://img.shields.io/badge/react_icons-5.5.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React Icons"/>
 </div>
 
+---
+
 <div align="center">
 
   [![Commit CI - Main](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/h0ldhaven/holdhaven/actions)
