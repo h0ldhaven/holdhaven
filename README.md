@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./public/images/png/profil.png" style="width: 10rem; border-radius:50%" alt="website logo">
+    <img src="./public/images/png/profil.png" style="width: 10rem" alt="website logo">
     <h1>🌐 holdhaven.fr</h1>
 </div>
 
@@ -55,7 +55,14 @@ cd holdhaven
 npm install
 ```
 
-### 2️⃣ ESLint Rules
+### 2️⃣ Lancer le projet en développement
+Pour travailler en local avec hot-reload automatique :
+```sh
+npm run dev
+```
+Chaque modification dans le code sera automatiquement reflétée dans le navigateur sans avoir besoin de refresh.
+
+### 3️⃣ ESLint Rules
 Pour maintenir un code propre et cohérent, voici les règles appliquées :
 - TypeScript eslint recommended rules
 - Indentation : 4 espaces
@@ -72,13 +79,6 @@ Cette commande analysera tous les fichiers et vous donnera des warnings pour :
 - Mauvais style d’indentation
 - Quotes incorrectes
 - Semicolons manquants
-
-### 3️⃣ Lancer le projet en développement
-Pour travailler en local avec hot-reload automatique :
-```sh
-npm run dev
-```
-Chaque modification dans le code sera automatiquement reflétée dans le navigateur sans avoir besoin de refresh.
 
 ### 4️⃣ Build du projet
 Pour générer la version de production optimisée :
