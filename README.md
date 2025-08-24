@@ -1,9 +1,15 @@
 # 🌐 holdhaven.fr - React + TypeScript + Vite
-
-[![Build Status - Main](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=main)](https://github.com/h0ldhaven/holdhaven/actions/workflows/commit-ci.yml?query=branch%3Amain)
-[![Build Status - Dev](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=dev)](https://github.com/h0ldhaven/holdhaven/actions/workflows/commit-ci.yml?query=branch%3Adev)
-
-[![Release](https://img.shields.io/github/v/release/h0ldhaven/holdhaven)](https://github.com/h0ldhaven/holdhaven/releases)
+<div align="center">
+  <a href="https://github.com/h0ldhaven/holdhaven/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=main" alt="Commit CI - Main"/>
+  </a>
+  <a href="https://github.com/h0ldhaven/holdhaven/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=dev" alt="Commit CI - Dev"/>
+  </a>
+  <a href="https://github.com/h0ldhaven/holdhaven/releases">
+    <img src="https://img.shields.io/github/v/release/h0ldhaven/holdhaven" alt="Release"/>
+  </a>
+</div>
 
 **HoldHaven** est une application web moderne construite avec React et TypeScript, propulsée par Vite pour un hot reload ultra rapide et une expérience de développement agréable.
 
