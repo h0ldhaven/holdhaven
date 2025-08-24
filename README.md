@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./public/images/png/profil.png" style="width: 10rem" alt="">
+    <img src="./public/images/png/profil.png" style="width: 10rem" alt="website logo">
     <h1>🌐 holdhaven.fr</h1>
 </div>
 
@@ -14,7 +14,8 @@
   <div align="center">
       <img style="margin: 0 1em" src="https://img.shields.io/badge/node-24.4.1-5FA04E?logo=nodedotjs&style=for-the-badge" alt="Node 24.4.1">
       <img style="margin: 0 1em" src="https://img.shields.io/badge/react-19.1.1-61DAFB?logo=react&style=for-the-badge" alt="React 19.1.1">
-      <img src="https://img.shields.io/badge/vite-5.3-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite 5.3"/>
+      <img style="margin: 0 1em" src="https://img.shields.io/badge/typescript-5.7.2-3178C6?logo=typescript&style=for-the-badge&logoColor=white" alt="TypeScript 5.7.2">
+      <img src="https://img.shields.io/badge/vite-6.3.1-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite 6.3.1"/>
   </div>
 
 ---
@@ -28,8 +29,6 @@
 
   Je suis un développeur web basé en Normandie, passionné par React, TypeScript et la création d’applications modernes.  
   **Holdhaven.fr** me permet d’expérimenter en continu et d’exposer mes compétences à travers un projet concret, en ligne et maintenu.
-
----
 
 ---
 
