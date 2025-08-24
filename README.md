@@ -19,9 +19,9 @@
   Elle me sert à la fois de vitrine pour présenter mes compétences en développement web et de terrain de jeu pour tester de nouvelles technologies ou fonctionnalités. 🚀
 
   <div align="center">
-    <img src="https://img.shields.io/badge/website-online-brightgreen?style=for-the-badge&logo=vercel" alt="Website Online">
+    <img src="https://img.shields.io/badge/website-online-brightgreen?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website Online"/>
+    <img src="https://img.shields.io/badge/hosted%20on-OVH-123F6D?style=for-the-badge&logo=ovh&logoColor=white" alt="Hosted on OVH"/>
     <img src="https://img.shields.io/badge/made%20with-%E2%9D%A4-ff69b4?style=for-the-badge" alt="Made with Love">
-    <img src="https://img.shields.io/badge/typescript-strict-3178C6?logo=typescript&style=for-the-badge" alt="TS Strict">
   </div>
 
 ---
