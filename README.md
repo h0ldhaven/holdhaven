@@ -2,9 +2,9 @@
 
   <div align="center">
 
-  [![Commit CI - Main](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=main)](https://github.com/h0ldhaven/holdhaven/actions)
-  [![Commit CI - Dev](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=dev)](https://github.com/h0ldhaven/holdhaven/actions)
-  [![Release](https://img.shields.io/github/v/release/h0ldhaven/holdhaven)](https://github.com/h0ldhaven/holdhaven/releases)
+  [![Commit CI - Main](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/h0ldhaven/holdhaven/actions)
+  [![Commit CI - Dev](https://img.shields.io/github/actions/workflow/status/h0ldhaven/holdhaven/commit-ci.yml?branch=dev&style=for-the-badge&logo=github)](https://github.com/h0ldhaven/holdhaven/actions)
+  [![Release](https://img.shields.io/github/v/release/h0ldhaven/holdhaven?style=for-the-badge&logo=github)](https://github.com/h0ldhaven/holdhaven/releases)
 
   </div>
 
