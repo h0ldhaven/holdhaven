@@ -42,6 +42,7 @@ Elle me sert à la fois de vitrine pour présenter mes compétences en développ
 ---
 
 <h2>How to install</h2>
+
 ### Developer
 #### Clone the project
 ```sh
