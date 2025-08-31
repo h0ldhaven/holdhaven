@@ -11,7 +11,7 @@ const LegalPage: React.FC = () => {
             <Header />
 
             <div className='flex flex-col items-center justify-center p-4 h-full w-full'>
-                <PdfViewer fileUrl='/docs/mentions-legales.pdf' />
+                <PdfViewer fileUrl='/docs/mentions-legales.pdf' zoom={1.2} />
             </div>
             
             <Footer />
