@@ -30,6 +30,7 @@ const Turnstile: React.FC<Props> = ({ sitekey, onVerify }) => {
             const existingScript = document.querySelector(
                 'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"]'
             );
+            
             if (existingScript) {
                 if (existingScript.hasAttribute('data-loaded')) {
                     resolve();
