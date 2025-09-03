@@ -81,7 +81,7 @@ jobs:
             echo "⚠️ The following dependencies are outdated:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "| Package | Current | Wanted | Latest |" >> $GITHUB_STEP_SUMMARY
-            echo "|---------|---------|--------|--------|----------|" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|---------|--------|--------|" >> $GITHUB_STEP_SUMMARY
             jq -r 'to_entries[] | "| \(.key) | \(.value.current) | \(.value.wanted) | \(.value.latest) |"' outdated.json >> $GITHUB_STEP_SUMMARY
           else
             echo "✅ All dependencies are up to date!" >> $GITHUB_STEP_SUMMARY
