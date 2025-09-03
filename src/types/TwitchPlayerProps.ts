@@ -1,4 +1,4 @@
 export type TwitchPlayerProps = {
-  channel: string;
-  parent: string;
+    channel: string;
+    parent: string;
 };
