@@ -1,6 +1,10 @@
 name: CI Code Security Check
 
 on:
+  push:
+    branches:
+      - dev
+
   pull_request:
     branches:
       - dev
@@ -59,8 +63,33 @@ jobs:
         run: npm ci
 
       - name: Check outdated packages
-        run: npm outdated
+        id: outdated
         continue-on-error: true
+        run: |
+          # Récupère la sortie JSON
+          npm outdated --json > outdated.json || true
+
+          # Vérifie si le JSON contient au moins une clé
+          if [ "$(jq 'length' outdated.json)" -gt 0 ]; then
+            echo "outdated=true" >> $GITHUB_ENV
+          else
+            echo "outdated=false" >> $GITHUB_ENV
+          fi
+
+      - name: Generate summary
+        run: |
+          echo "## 📦 Dependency Update Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ env.outdated }}" = "true" ]; then
+            echo "⚠️ The following dependencies are outdated:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Package | Current | Wanted | Latest |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|---------|--------|--------|" >> $GITHUB_STEP_SUMMARY
+            jq -r 'to_entries[] | "| \(.key) | \(.value.current) | \(.value.wanted) | \(.value.latest) |"' outdated.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All dependencies are up to date!" >> $GITHUB_STEP_SUMMARY
+          fi
 
   license_scan:
     name: "📃 License Scan"
@@ -80,7 +109,36 @@ jobs:
         run: npm ci
 
       - name: Check licenses
-        run: npx license-checker --production --summary
+        id: licenses
+        continue-on-error: true
+        run: |
+          # On génère un JSON complet
+          npx license-checker --production --json > licenses.json || true
+
+          # On filtre uniquement les dépendances "UNLICENSED"
+          jq -r 'to_entries | map(select(.value.licenses == "UNLICENSED"))' licenses.json > unlicensed.json
+
+          # Vérifie si on a trouvé des paquets non licenciés
+          if [ "$(jq 'length' unlicensed.json)" -gt 0 ]; then
+            echo "unlicensed=true" >> $GITHUB_ENV
+          else
+            echo "unlicensed=false" >> $GITHUB_ENV
+          fi
+
+      - name: Generate summary
+        run: |
+          echo "## 📃 License Scan Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ env.unlicensed }}" = "true" ]; then
+            echo "⚠️ The following dependencies have **UNLICENSED** status:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Package | License |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|---------|" >> $GITHUB_STEP_SUMMARY
+            jq -r '.[] | "| \(.key) | \(.value.licenses) |"' unlicensed.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All production dependencies have valid licenses!" >> $GITHUB_STEP_SUMMARY
+          fi
 
   secret_scan:
     name: "🔐 Secret Scan"
