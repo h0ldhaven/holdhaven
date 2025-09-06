@@ -3,7 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
-import stylisticTs from '@stylistic/eslint-plugin-ts'
+import stylistic from '@stylistic/eslint-plugin'
 import parserTs from '@typescript-eslint/parser'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import react from 'eslint-plugin-react'
@@ -19,7 +19,7 @@ export default tseslint.config(
       parser: parserTs,
     },
     plugins: {
-      '@stylistic/ts': stylisticTs,
+      '@stylistic': stylistic,
       'jsx-a11y': jsxA11y,
       'react': react,
       'react-hooks': reactHooks,
@@ -28,7 +28,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
 
-      'indent': ['error', 4, { SwitchCase: 1 }],
+      '@stylistic/indent': ['error', 4, { SwitchCase: 1 }],
       'semi': 'error',
       'quotes': ['error', 'single'],
       'jsx-quotes': ['error', 'prefer-single'],

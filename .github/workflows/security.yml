@@ -1,0 +1,195 @@
+name: CI Code Security Check
+
+on:
+  push:
+    branches:
+      - dev
+
+  pull_request:
+    branches:
+      - dev
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+permissions:
+  actions: read
+  security-events: write
+
+concurrency:
+  group: security-check-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  package_scan:
+    name: "📦 Package Scan"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Security audit
+        run: npm audit --audit-level=high
+
+      - name: Verify lockfile integrity
+        run: npm ci --verify-tree
+
+  dependency_update_check:
+    name: "🔄 Dependency Update Check"
+    runs-on: ubuntu-latest
+    needs: package_scan
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check outdated packages
+        id: outdated
+        continue-on-error: true
+        run: |
+          # Récupère la sortie JSON
+          npm outdated --json > outdated.json || true
+
+          # Vérifie si le JSON contient au moins une clé
+          if [ "$(jq 'length' outdated.json)" -gt 0 ]; then
+            echo "outdated=true" >> $GITHUB_ENV
+          else
+            echo "outdated=false" >> $GITHUB_ENV
+          fi
+
+      - name: Generate summary
+        run: |
+          echo "## 📦 Dependency Update Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ env.outdated }}" = "true" ]; then
+            echo "⚠️ The following dependencies are outdated:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Package | Current | Wanted | Latest |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|---------|--------|--------|" >> $GITHUB_STEP_SUMMARY
+            jq -r 'to_entries[] | "| \(.key) | \(.value.current) | \(.value.wanted) | \(.value.latest) |"' outdated.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All dependencies are up to date!" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  license_scan:
+    name: "📃 License Scan"
+    runs-on: ubuntu-latest
+    needs: dependency_update_check
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+       
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check licenses
+        id: licenses
+        continue-on-error: true
+        run: |
+          # On génère un JSON complet
+          npx license-checker --production --json > licenses.json || true
+
+          # On filtre uniquement les dépendances "UNLICENSED"
+          jq -r 'to_entries | map(select(.value.licenses == "UNLICENSED"))' licenses.json > unlicensed.json
+
+          # Vérifie si on a trouvé des paquets non licenciés
+          if [ "$(jq 'length' unlicensed.json)" -gt 0 ]; then
+            echo "unlicensed=true" >> $GITHUB_ENV
+          else
+            echo "unlicensed=false" >> $GITHUB_ENV
+          fi
+
+      - name: Generate summary
+        run: |
+          echo "## 📃 License Scan Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ env.unlicensed }}" = "true" ]; then
+            echo "⚠️ The following dependencies have **UNLICENSED** status:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Package | License |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|---------|" >> $GITHUB_STEP_SUMMARY
+            jq -r '.[] | "| \(.key) | \(.value.licenses) |"' unlicensed.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All production dependencies have valid licenses!" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  secret_scan:
+    name: "🔐 Secret Scan"
+    runs-on: ubuntu-latest
+    needs: license_scan
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+       
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect secrets with Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  security_scan:
+    name: "🛡️ Security Scan"
+    runs-on: ubuntu-latest
+    needs: secret_scan
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+       
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript,typescript
+
+      - name: Build project
+        run: npm run build
+
+      - name: Analyze CodeQL
+        uses: github/codeql-action/analyze@v3
+
+      
