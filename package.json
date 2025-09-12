@@ -1,14 +1,12 @@
 {
   "name": "holdhaven-app",
   "private": false,
-  "private": false,
   "version": "1.0.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "clint": "eslint src/**/*.{ts,tsx}",
     "clint": "eslint src/**/*.{ts,tsx}",
     "preview": "vite preview"
   },
@@ -17,23 +15,8 @@
     "react-dom": "^19.1.1",
     "react-router": "^7.8.2",
     "react-router-dom": "^7.8.2"
-    "react-router": "^7.8.2",
-    "react-router-dom": "^7.8.2"
   },
   "devDependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "@eslint/js": "^9.35.0",
-    "@fortawesome/fontawesome-svg-core": "^7.0.1",
-    "@fortawesome/free-brands-svg-icons": "^7.0.1",
-    "@fortawesome/react-fontawesome": "^3.0.2",
-    "@react-icons/all-files": "^4.1.0",
-    "@stylistic/eslint-plugin": "^5.3.1",
-    "@tailwindcss/vite": "^4.1.13",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.2",
-    "@vitejs/plugin-react-swc": "^4.0.1",
-    "eslint": "^9.35.0",
     "@emailjs/browser": "^4.4.1",
     "@eslint/js": "^9.35.0",
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
