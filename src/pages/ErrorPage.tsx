@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 import { ErrorState } from '../interfaces/ErrorState';
 
 const ErrorPage: React.FC = () => {
     const location = useLocation();
-    const [errorStatus, setErrorStatus] = useState<number>(404);
-    const [errorMessage, setErrorMessage] = useState<string>('Page non trouvée. Veuillez vérifier l\'URL.');
 
-    useEffect(() => {
-        // Vérifie si l'état d'erreur est passé via la location
-        const state = location.state as ErrorState | undefined;
-        if (state?.errorStatus && state?.errorMessage) {
-            setErrorStatus(state.errorStatus);
-            setErrorMessage(state.errorMessage);
-        }
-    }, [location]);
+    const state = location.state as ErrorState | undefined;
+
+    const [errorStatus] = useState<number>(
+        state?.errorStatus ?? 404
+    );
+
+    const [errorMessage] = useState<string>(
+        state?.errorMessage ?? 'Page non trouvée. Veuillez vérifier l\'URL.'
+    );
+
+
+
+    //const [errorStatus, setErrorStatus] = useState<number>(404);
+
+    //const [errorMessage, setErrorMessage] = useState<string>('Page non trouvée. Veuillez vérifier l\'URL.');
+
+    // useEffect(() => {
+    //     // Vérifie si l'état d'erreur est passé via la location
+    //     if (state?.errorStatus && state?.errorMessage) {
+    //         setErrorStatus(state.errorStatus);
+    //         setErrorMessage(state.errorMessage);
+    //     }
+    // }, [location]);
 
     return(
         <main className='flex flex-col h-full min-h-screen bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300 ease-in-out'>

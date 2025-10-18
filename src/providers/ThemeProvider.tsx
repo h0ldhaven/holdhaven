@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
-import { Theme, ThemeEnum } from '../types/theme';
 import { ThemeProviderProps } from '../interfaces/ThemeProviderProps';
+import { Theme, ThemeEnum } from '../types/theme';
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>(ThemeEnum.LIGHT);
-
-    useEffect(() => {
+    const [theme, setTheme] = useState<Theme>(() => {
         const storedTheme = localStorage.getItem('theme');
         if (storedTheme === ThemeEnum.LIGHT || storedTheme === ThemeEnum.DARK) {
-            setTheme(storedTheme);
-            document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+            document.documentElement.classList.toggle('dark', storedTheme === ThemeEnum.DARK);
+            return storedTheme as Theme;
         }
-    }, []);
+        return ThemeEnum.LIGHT;
+    });
 
     const toggleTheme = () => {
         const newTheme: Theme = theme === ThemeEnum.LIGHT ? ThemeEnum.DARK: ThemeEnum.LIGHT;
